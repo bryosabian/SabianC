@@ -5,18 +5,20 @@
  */
 
 /* 
- * File:   SabianHelper.h
+ * File:   SabianNode.h
  * Author: katekiguru
  *
- * Created on August 24, 2020, 10:50 PM
+ * Created on May 6, 2021, 7:02 PM
  */
 
-#ifndef SABIANHELPER_H
-#define SABIANHELPER_H
+#ifndef SABIANNODE_H
+#define SABIANNODE_H
 
-#include "SabianUser.h"
+template <class T>
+struct SabianNode {
+    T data;
+    SabianNode *left, *right;
+};
 
-extern SabianUser getCurrentUser();
-
-#endif /* SABIANHELPER_H */
+#endif /* SABIANNODE_H */
 

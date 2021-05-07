@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-MacOSX
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-MacOSX
-CND_ARTIFACT_NAME_Debug=sabianstudy
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-MacOSX/sabianstudy
+CND_ARTIFACT_NAME_Debug=sabianc
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-MacOSX/sabianc
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-MacOSX/package
-CND_PACKAGE_NAME_Debug=sabianstudy.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-MacOSX/package/sabianstudy.tar
+CND_PACKAGE_NAME_Debug=sabianc.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-MacOSX/package/sabianc.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-MacOSX
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-MacOSX
-CND_ARTIFACT_NAME_Release=sabianstudy
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-MacOSX/sabianstudy
+CND_ARTIFACT_NAME_Release=sabianc
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-MacOSX/sabianc
 CND_PACKAGE_DIR_Release=dist/Release/GNU-MacOSX/package
-CND_PACKAGE_NAME_Release=sabianstudy.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-MacOSX/package/sabianstudy.tar
+CND_PACKAGE_NAME_Release=sabianc.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-MacOSX/package/sabianc.tar
 #
 # include compiler specific variables
 #

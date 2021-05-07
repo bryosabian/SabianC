@@ -4,8 +4,15 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="dataStructures"
+                     displayName="dataStructures"
+                     projectFiles="true">
+        <logicalFolder name="BST" displayName="BST" projectFiles="true">
+          <itemPath>dataStructures/SabianNode.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <itemPath>dataStructures/BST/SabianBST.h</itemPath>
       <itemPath>SabianConfig.h</itemPath>
-      <itemPath>SabianHelper.h</itemPath>
       <itemPath>SabianUser.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -15,8 +22,13 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="dataStructures"
+                     displayName="dataStructures"
+                     projectFiles="true">
+        <logicalFolder name="BST" displayName="BST" projectFiles="true">
+        </logicalFolder>
+      </logicalFolder>
       <itemPath>SabianConfig.cpp</itemPath>
-      <itemPath>SabianHelper.cpp</itemPath>
       <itemPath>SabianUser.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -32,6 +44,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>dataStructures</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
@@ -46,13 +61,13 @@
       </item>
       <item path="SabianConfig.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="SabianHelper.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="SabianHelper.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="SabianUser.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="SabianUser.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="dataStructures/BST/SabianBST.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="dataStructures/SabianNode.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -81,13 +96,13 @@
       </item>
       <item path="SabianConfig.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="SabianHelper.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="SabianHelper.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="SabianUser.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="SabianUser.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="dataStructures/BST/SabianBST.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="dataStructures/SabianNode.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

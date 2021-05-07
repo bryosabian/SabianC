@@ -36,7 +36,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/SabianConfig.o \
-	${OBJECTDIR}/SabianHelper.o \
 	${OBJECTDIR}/SabianUser.o \
 	${OBJECTDIR}/main.o
 
@@ -59,21 +58,16 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sabianstudy
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sabianc
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sabianstudy: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sabianc: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sabianstudy ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sabianc ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/SabianConfig.o: SabianConfig.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SabianConfig.o SabianConfig.cpp
-
-${OBJECTDIR}/SabianHelper.o: SabianHelper.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SabianHelper.o SabianHelper.cpp
 
 ${OBJECTDIR}/SabianUser.o: SabianUser.cpp
 	${MKDIR} -p ${OBJECTDIR}

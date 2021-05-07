@@ -11,60 +11,58 @@
  * Created on August 24, 2020, 8:24 PM
  */
 
-#include <cstdlib>
-#include <iostream>
-#include "SabianConfig.h"
-#include <string>
-#include "SabianUser.h"
-#include "SabianHelper.h"
+#include "dataStructures/BST/SabianBST.h"
 
+
+#include "SabianConfig.h"
 
 using namespace std;
 
-/**
- * Print sizes
- */
-void printSizes() {
-    cout << "Size of char : " << sizeof (char) << endl;
-    cout << "Size of int : " << sizeof (int) << endl;
-    cout << "Size of short int : " << sizeof (short int) << endl;
-    cout << "Size of long int : " << sizeof (long int) << endl;
-    cout << "Size of float : " << sizeof (float) << endl;
-    cout << "Size of double : " << sizeof (double) << endl;
-    cout << "Size of wchar_t : " << sizeof (wchar_t) << endl;
-}
+void bst() {
+    SabianBST<int> tree = SabianBST<int>();
+    tree.insert(100);
+    tree.insert(200);
+    tree.insert(600);
+    tree.insert(500);
+    tree.insert(400);
 
-/**
- * Classes
- */
-void classes() {
-    SabianUser user = SabianUser("Brian", 22, "male");
-    printLn("The user is " + user.getName());
-}
+    int x,y,z;
+    
+    cout << "Enter 3 numbers to include in the tree" << endl;
+    
+    cin >> x >> y >> z;
+    
+    tree.insert(x);
+    tree.insert(y);
+    tree.insert(z);
+    
+    SABIAN_STRING type;
 
-void interClasses() {
-    SabianUser currentUser = getCurrentUser();
-    if (currentUser == SabianUser::null()) {
-        printLn("Current user not set");
+    cout << "Enter Traversal Type to use to list items in the tree (preOrder,postOrder,inOrder)" << endl;
+
+    cin >> type;
+
+    tree.traverse(type);
+
+    int searchValue;
+
+    cout << "Enter Search Value" << endl;
+
+    cin >> searchValue;
+
+    bool exists = tree.search(searchValue);
+    if (exists) {
+        cout << "The value " << to_string(searchValue) << " exists in the tree " << endl;
     } else {
-        printLn("The current user is " + currentUser.getName());
+        cout << "The value " << to_string(searchValue) << " does not exist in the tree " << endl;
     }
-}
-
-SABIAN_INT addNumbers(SABIAN_INT x, SABIAN_INT y) {
-    return x + y;
 }
 
 /*
  * The main file
  */
 int main(int argc, char** argv) {
-    printLn("Hello World");
-    printSizes();
-    classes();
-    interClasses();
-    int num = addNumbers(1, 3);
-    printLn("Custom add " + to_string(num) + "");
+    bst();
     return 0;
 }
 

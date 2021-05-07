@@ -14,63 +14,62 @@
 #ifndef SABIANUSER_H
 #define SABIANUSER_H
 
-#include <string>
+
+#include<iostream>
 #include "SabianConfig.h"
 
 class SabianUser {
 public:
     SabianUser();
-    static SabianUser null();
     SabianUser(const SabianUser& orig);
     virtual ~SabianUser();
 
-    SabianUser(SABIAN_STRING name, SABIAN_INT age, SABIAN_STRING gender) {
-        this->name = name;
-        this->age = age;
-        this->gender = gender;
-    }
+    SabianUser(SABIAN_STRING name, SABIAN_INT age, SABIAN_STRING gender);
 
-    SABIAN_INT getAge() const {
-        return age;
-    }
+    SABIAN_INT getAge() const;
 
-    SABIAN_STRING getGender() const {
-        return gender;
-    }
+    SABIAN_STRING getGender() const;
 
-    SABIAN_STRING getName() const {
-        return name;
-    }
+    SABIAN_STRING getName() const;
 
-    SABIAN_LONG getID() const {
-        return ID;
-    }
+    SABIAN_LONG getID() const;
 
-    void setID(SABIAN_LONG ID) {
-        this->ID = ID;
-    }
+    SABIAN_INT getHeight() const;
 
-    void setAge(SABIAN_INT age) {
-        this->age = age;
-    }
 
-    void setGender(SABIAN_STRING gender) {
-        this->gender = gender;
-    }
+    void setID(SABIAN_LONG ID);
 
-    void setName(SABIAN_STRING name) {
-        this->name = name;
-    }
+    void setAge(SABIAN_INT age);
 
-    bool operator==(const SabianUser &user) const {
-        return this->ID == user.ID;
-    }
+    void setGender(SABIAN_STRING gender);
+
+    void setName(SABIAN_STRING name);
+
+    void setHeight(SABIAN_INT height);
+
+
+    bool operator==(const SabianUser &user1) const;
+
+    bool operator<(const SabianUser &user) const;
+
+    bool operator<=(const SabianUser &user) const;
+
+    bool operator>(const SabianUser &user) const;
+
+    bool operator>=(const SabianUser &user) const;
+
+    std::ostream& operator << (std::ostream& os);
+    
+
+
+
 
 private:
     SABIAN_STRING name;
     SABIAN_INT age;
     SABIAN_STRING gender;
     SABIAN_LONG ID;
+    SABIAN_INT height;
 };
 
 #endif /* SABIANUSER_H */

@@ -16,17 +16,36 @@
 
 #ifdef __cplusplus
 
-#include <iostream>
 #include <string>
 
 extern "C" {
 #endif
 
+#ifndef NULL
+#define NULL 0
+#endif
+
+    /**
+     The integer
+     */
     typedef int SABIAN_INT;
+
+    /**
+     The string type*/
     typedef std::string SABIAN_STRING;
+
+    /**
+     The Long type*/
     typedef long SABIAN_LONG;
+
+    /**
+     * Prints a new string
+     * @param text
+     */
     extern void printLn(SABIAN_STRING text);
-    
+
+
+
 #ifdef __cplusplus
 }
 #endif
