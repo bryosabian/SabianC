@@ -12,8 +12,7 @@
  */
 
 #include "dataStructures/BST/SabianBST.h"
-
-
+#include "dataStructures/stacks/SabianStack.h"
 #include "SabianConfig.h"
 
 using namespace std;
@@ -76,7 +75,7 @@ void bst() {
      */
     cout << "Before invert " << endl;
     tree.print();
-    
+
     /**
      * Invert the tree
      */
@@ -85,11 +84,28 @@ void bst() {
     tree.print();
 }
 
+void stack() {
+    SabianStack<int> stack = SabianStack<int>(10);
+    try {
+        stack.push(100);
+        stack.push(200);
+        stack.push(900);
+        stack.print();
+        cout << "The peak before pop is " << stack.peek() << endl;
+
+        stack.pop();
+        stack.print();
+        cout << "The peak after pop is " << stack.peek() << endl;
+    } catch (char* e) {
+        cout << "Exception " << e << endl;
+    }
+}
+
 /*
  * The main file
  */
 int main(int argc, char** argv) {
-    bst();
+    stack();
     return 0;
 }
 
