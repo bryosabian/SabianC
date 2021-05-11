@@ -78,6 +78,22 @@ public:
         }
     }
 
+    /**
+     * Prints the data structure
+     */
+    void print() {
+        this->print(this->rootNode);
+    }
+
+    /**
+     * Inverts the node to from right to left instead of left to right
+     * @param node
+     * @param item
+     */
+    void invert() {
+        this->invert(this->rootNode);
+    }
+
 private:
     SabianNode<T> * rootNode;
 
@@ -238,6 +254,64 @@ private:
         }
     }
 
+    /**
+     Prints a node
+     */
+    void print(const SABIAN_STRING prefix, const SabianNode<T> * node, const bool isLeft) const {
+
+        if (node != NULL) {
+
+            std::cout << prefix;
+
+            std::cout << (isLeft ? "├──" : "└──");
+
+            // print the value of the node
+            std::cout << node->data << std::endl;
+
+            //Print left and right nodes
+            print(prefix + (isLeft ? "│   " : "    "), node->left, true);
+            print(prefix + (isLeft ? "│   " : "    "), node->right, false);
+        }
+    }
+
+    /**
+     Prints a single node
+     */
+    void print(const SabianNode<T> * node) const {
+        print("", node, false);
+    }
+
+    /**
+     * Inverts the left and right node
+     */
+    void invert(SabianNode<T> * node) {
+
+        if (node == NULL) {
+            return;
+        }
+
+        if (node->left != NULL && node->right != NULL) {
+            this->swap(node->left, node->right);
+        }
+
+        this->invert(node->left);
+        this->invert(node->right);
+    }
+
+    /**
+     * Swaps two nodes
+     */
+    void swap(SabianNode<T> * leftNode, SabianNode<T> * rightNode) {
+
+        //Initialize temporary value to left node value
+        SabianNode<T> tempNode = *leftNode;
+
+        //Dereference left node to store the value of right node
+        *leftNode = *rightNode;
+
+        //Dereference right node to point to the old left node from the temp node
+        *rightNode = tempNode;
+    }
 };
 
 #endif /* SABIANBST_H */

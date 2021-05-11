@@ -22,40 +22,67 @@ void bst() {
     SabianBST<int> tree = SabianBST<int>();
     tree.insert(100);
     tree.insert(200);
+    tree.insert(900);
     tree.insert(600);
     tree.insert(500);
     tree.insert(400);
+    tree.insert(800);
+    tree.insert(1000);
 
-    int x,y,z;
-    
-    cout << "Enter 3 numbers to include in the tree" << endl;
-    
-    cin >> x >> y >> z;
-    
-    tree.insert(x);
-    tree.insert(y);
-    tree.insert(z);
-    
-    SABIAN_STRING type;
+    int x, y, z;
 
-    cout << "Enter Traversal Type to use to list items in the tree (preOrder,postOrder,inOrder)" << endl;
+    bool proceedWithInteraction = false;
+    SABIAN_STRING selected;
+    cout << "Do you want to carry out operations> Y or N" << endl;
+    cin >> selected;
 
-    cin >> type;
+    proceedWithInteraction = selected == "Y";
 
-    tree.traverse(type);
 
-    int searchValue;
+    if (proceedWithInteraction) {
 
-    cout << "Enter Search Value" << endl;
+        cout << "Enter 3 numbers to include in the tree" << endl;
 
-    cin >> searchValue;
+        cin >> x >> y >> z;
 
-    bool exists = tree.search(searchValue);
-    if (exists) {
-        cout << "The value " << to_string(searchValue) << " exists in the tree " << endl;
-    } else {
-        cout << "The value " << to_string(searchValue) << " does not exist in the tree " << endl;
+        tree.insert(x);
+        tree.insert(y);
+        tree.insert(z);
+
+        SABIAN_STRING type;
+
+        cout << "Enter Traversal Type to use to list items in the tree (preOrder,postOrder,inOrder)" << endl;
+
+        cin >> type;
+
+        tree.traverse(type);
+
+        int searchValue;
+
+        cout << "Enter Search Value" << endl;
+
+        cin >> searchValue;
+
+        bool exists = tree.search(searchValue);
+        if (exists) {
+            cout << "The value " << to_string(searchValue) << " exists in the tree " << endl;
+        } else {
+            cout << "The value " << to_string(searchValue) << " does not exist in the tree " << endl;
+        }
     }
+
+    /**
+     * Print the tree
+     */
+    cout << "Before invert " << endl;
+    tree.print();
+    
+    /**
+     * Invert the tree
+     */
+    tree.invert();
+    cout << "After invert" << endl;
+    tree.print();
 }
 
 /*
