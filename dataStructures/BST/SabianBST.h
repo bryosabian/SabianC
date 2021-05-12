@@ -6,7 +6,7 @@
 
 /* 
  * File:   SabianBST.h
- * Author: katekiguru
+ * Author: bryosabian
  *
  * Created on May 6, 2021, 7:04 PM
  */
@@ -28,6 +28,14 @@ public:
      */
     SabianBST() {
         this->rootNode = NULL;
+    }
+
+    /**
+     * Free everything up
+     */
+    virtual ~SabianBST() {
+        std::cout << "Deinitializing tree " << std::endl;
+        delete this->rootNode;
     }
 
     /**

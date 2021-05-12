@@ -9,7 +9,7 @@
 #include "SabianConfig.h"
 
 SabianUser::SabianUser() {
-
+ std::cout << "Initializing user " << std::endl;
 }
 
 SabianUser::SabianUser(const SabianUser& orig) {
@@ -20,6 +20,7 @@ SabianUser::SabianUser(const SabianUser& orig) {
 }
 
 SabianUser::~SabianUser() {
+    std::cout << "Deinitializing user " << std::endl;
 }
 
 SabianUser::SabianUser(SABIAN_STRING name, SABIAN_INT age, SABIAN_STRING gender) {

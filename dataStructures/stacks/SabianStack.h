@@ -6,7 +6,7 @@
 
 /* 
  * File:   SabianStack.h
- * Author: katekiguru
+ * Author: bryosabian
  *
  * Created on May 11, 2021, 8:17 PM
  */
@@ -15,24 +15,51 @@
 #define SABIANSTACK_H
 
 #include "../../SabianConfig.h"
+#include "../../SabianException.h"
+
 #include <iostream>
 
 template <class T>
 class SabianStack {
 private:
 
-    static const int INITIAL_SIZE = 10;
+    static const int INITIAL_SIZE = 2;
     T* collection;
     int topIndex;
     int capacity;
-    bool alwaysPopItemsFromMemory = false;
+    bool alwaysPopItemsFromMemory = true;
 
     /**
-    Returns real size of the collection
+     * Resizes the collection to new size
      */
-    int getRealSize() {
-        int arrSize = sizeof (collection) / sizeof (collection[0]);
-        return arrSize;
+    void resize() {
+
+        //Don't resize if stack is empty
+        if (isEmpty()) {
+            return;
+        }
+
+
+        int originalSize = this->getSize();
+
+        //Don't resize if we haven't reached the maximum
+        if (originalSize < INITIAL_SIZE) {
+            return;
+        }
+        //Change the new capacity by one
+        int newSize = ++capacity;
+
+        //Initialize the new collection that will be copied to and have enough space for our new element
+        T* newCollection = new T[newSize];
+
+        //Copy the previous collection content to the new content
+        memcpy(newCollection, this->collection, originalSize * sizeof (T));
+
+        //Clear the old collection from memory
+        delete this->collection;
+
+        //Assign the old collection to the new one
+        this->collection = newCollection;
     }
 
 public:
@@ -40,10 +67,17 @@ public:
     /**
      * Initializes the stack
      */
-    SabianStack(int initialSize) {
+    SabianStack() {
         topIndex = -1;
-        capacity = initialSize;
+        capacity = INITIAL_SIZE;
         collection = new T[capacity];
+    }
+
+    /**
+     * Free everything up
+     */
+    virtual ~SabianStack() {
+        delete this->collection;
     }
 
     /**
@@ -52,30 +86,34 @@ public:
      */
     void push(T value) {
 
+        //Resize the stack if need be to accommodate the new element(s)
+        this->resize();
+
         //Don't add if stack is full
         if (isFull())
-            throw "Trying to push to an already full stack";
+            throw SabianException("Trying to push to an already full stack");
 
-        //Add new item while increasing the top index
+        //Add new item while replacing the top element
         collection[++topIndex] = value;
     }
 
     /**
      * Removes an item from the top and returns the removed item
-     * @return 
+     * @return T
      */
     T pop() {
-        
+
         //Don't remove from empty stack
         if (isEmpty()) {
-            throw "Trying to access an empty stack";
+            throw SabianException("Trying to access an empty stack");
         }
         //Return the item to be popped
         T value = collection[topIndex];
 
         //Delete it from memory as well if need be
         if (alwaysPopItemsFromMemory) {
-            for (int j = topIndex; j < getRealSize(); j++)
+            int size = getSize();
+            for (int j = topIndex; j < size; j++)
                 collection[j] = collection[j + 1];
         }
 
@@ -92,7 +130,7 @@ public:
      */
     T peek() {
         if (isEmpty()) {
-            throw "Trying to access an empty stack";
+            throw SabianException("Trying to access an empty stack");
         }
         return collection[topIndex];
     }
@@ -133,6 +171,8 @@ public:
             }
         }
     }
+
+
 
 };
 

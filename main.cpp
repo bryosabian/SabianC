@@ -6,7 +6,7 @@
 
 /* 
  * File:   main.cpp
- * Author: katekiguru
+ * Author: bryosabian
  *
  * Created on August 24, 2020, 8:24 PM
  */
@@ -14,6 +14,8 @@
 #include "dataStructures/BST/SabianBST.h"
 #include "dataStructures/stacks/SabianStack.h"
 #include "SabianConfig.h"
+#include "SabianUser.h"
+#include "SabianException.h"
 
 using namespace std;
 
@@ -85,18 +87,28 @@ void bst() {
 }
 
 void stack() {
-    SabianStack<int> stack = SabianStack<int>(10);
+    SabianStack<int> stack = SabianStack<int>();
     try {
         stack.push(100);
         stack.push(200);
         stack.push(900);
+        stack.push(1200);
         stack.print();
+        
         cout << "The peak before pop is " << stack.peek() << endl;
+        cout << "Size of collection is " << stack.getSize() << endl;
 
-        stack.pop();
+        cout << "Popping " << stack.pop() << " from the stack " << endl;
+
         stack.print();
         cout << "The peak after pop is " << stack.peek() << endl;
-    } catch (char* e) {
+
+        cout << "Size of collection is " << stack.getSize() << endl;
+    } 
+    catch(SabianException e){
+        cout << "Stack Exception " << e.getMessage() << endl;
+    }
+    catch (const char* e) {
         cout << "Exception " << e << endl;
     }
 }
@@ -106,6 +118,7 @@ void stack() {
  */
 int main(int argc, char** argv) {
     stack();
-    return 0;
+    return 0; //Frees up all constructors when set to return(0) and not exit(0)
+
 }
 

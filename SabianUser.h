@@ -6,7 +6,7 @@
 
 /* 
  * File:   SabianUser.h
- * Author: katekiguru
+ * Author: bryosabian
  *
  * Created on August 24, 2020, 9:49 PM
  */

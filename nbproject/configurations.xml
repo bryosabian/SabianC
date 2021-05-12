@@ -13,6 +13,7 @@
         </logicalFolder>
       </logicalFolder>
       <itemPath>SabianConfig.h</itemPath>
+      <itemPath>SabianException.h</itemPath>
       <itemPath>dataStructures/stacks/SabianStack.h</itemPath>
       <itemPath>SabianUser.h</itemPath>
     </logicalFolder>
@@ -57,10 +58,15 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <standard>8</standard>
+        </ccTool>
       </compileType>
       <item path="SabianConfig.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="SabianConfig.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SabianException.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="SabianUser.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -101,6 +107,8 @@
       <item path="SabianConfig.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="SabianConfig.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SabianException.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="SabianUser.cpp" ex="false" tool="1" flavor2="0">
       </item>
