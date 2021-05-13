@@ -14,17 +14,16 @@
 #ifndef SABIANSTACK_H
 #define SABIANSTACK_H
 
-#include "../../SabianConfig.h"
-#include "../../SabianException.h"
-
+#include "../SabianConfig.h"
+#include "../SabianException.h"
 #include <iostream>
+#include "../SabianDynamicArray.h"
 
 template <class T>
-class SabianStack {
+class SabianStack : protected SabianDynamicArray<T> {
 private:
 
     static const int INITIAL_SIZE = 2;
-    T* collection;
     int topIndex;
     int capacity;
     bool alwaysPopItemsFromMemory = true;
@@ -40,26 +39,19 @@ private:
         }
 
 
+        //Get the original size
         int originalSize = this->getSize();
 
         //Don't resize if we haven't reached the maximum
         if (originalSize < INITIAL_SIZE) {
             return;
         }
-        //Change the new capacity by one
+
+        //Initialize the new size
         int newSize = ++capacity;
 
-        //Initialize the new collection that will be copied to and have enough space for our new element
-        T* newCollection = new T[newSize];
-
-        //Copy the previous collection content to the new content
-        memcpy(newCollection, this->collection, originalSize * sizeof (T));
-
-        //Clear the old collection from memory
-        delete this->collection;
-
-        //Assign the old collection to the new one
-        this->collection = newCollection;
+        //Resize the array
+        SabianDynamicArray<T>::resize(originalSize, newSize);
     }
 
 public:
@@ -70,7 +62,7 @@ public:
     SabianStack() {
         topIndex = -1;
         capacity = INITIAL_SIZE;
-        collection = new T[capacity];
+        this->collection = new T[capacity];
     }
 
     /**
@@ -94,7 +86,7 @@ public:
             throw SabianException("Trying to push to an already full stack");
 
         //Add new item while replacing the top element
-        collection[++topIndex] = value;
+        this->collection[++topIndex] = value;
     }
 
     /**
@@ -108,13 +100,12 @@ public:
             throw SabianException("Trying to access an empty stack");
         }
         //Return the item to be popped
-        T value = collection[topIndex];
+        T value = this->collection[topIndex];
 
         //Delete it from memory as well if need be
         if (alwaysPopItemsFromMemory) {
             int size = getSize();
-            for (int j = topIndex; j < size; j++)
-                collection[j] = collection[j + 1];
+            SabianDynamicArray<T>::unset(topIndex, size);
         }
 
         //Reduce the top index by one
@@ -132,7 +123,7 @@ public:
         if (isEmpty()) {
             throw SabianException("Trying to access an empty stack");
         }
-        return collection[topIndex];
+        return this->collection[topIndex];
     }
 
     /**
@@ -167,7 +158,7 @@ public:
             std::cout << "No element found" << std::endl;
         } else {
             for (int i = topIndex; i >= 0; i--) {
-                std::cout << collection[i] << std::endl;
+                std::cout << this->collection[i] << std::endl;
             }
         }
     }

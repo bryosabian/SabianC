@@ -12,10 +12,11 @@
  */
 
 #include "dataStructures/BST/SabianBST.h"
-#include "dataStructures/stacks/SabianStack.h"
+#include "dataStructures/SabianStack.h"
 #include "SabianConfig.h"
 #include "SabianUser.h"
 #include "SabianException.h"
+#include "dataStructures/SabianQueue.h"
 
 using namespace std;
 
@@ -93,8 +94,9 @@ void stack() {
         stack.push(200);
         stack.push(900);
         stack.push(1200);
+        stack.push(500);
         stack.print();
-        
+
         cout << "The peak before pop is " << stack.peek() << endl;
         cout << "Size of collection is " << stack.getSize() << endl;
 
@@ -104,11 +106,35 @@ void stack() {
         cout << "The peak after pop is " << stack.peek() << endl;
 
         cout << "Size of collection is " << stack.getSize() << endl;
-    } 
-    catch(SabianException e){
+    } catch (SabianException e) {
         cout << "Stack Exception " << e.getMessage() << endl;
+    } catch (const char* e) {
+        cout << "Exception " << e << endl;
     }
-    catch (const char* e) {
+}
+
+void queue() {
+    SabianQueue<int> queue = SabianQueue<int>();
+    try {
+        queue.enqueue(100);
+        queue.enqueue(200);
+        queue.enqueue(300);
+        queue.print();
+        cout << "Total size " << queue.getSize() << endl;
+        cout << "Peek " << queue.peek() << endl;
+
+
+        cout << "Trying to dequeue " << queue.dequeue() << endl;
+
+        cout << "After dequeue " << endl;
+        queue.print();
+        cout << "Total size " << queue.getSize() << endl;
+        cout << "Peek " << queue.peek() << endl;
+
+
+    } catch (SabianException e) {
+        cout << "Queue Exception " << e.getMessage() << endl;
+    } catch (const char * e) {
         cout << "Exception " << e << endl;
     }
 }
@@ -117,7 +143,18 @@ void stack() {
  * The main file
  */
 int main(int argc, char** argv) {
-    stack();
+    SABIAN_STRING type;
+    cout << "Enter Data Structure : (bst,stack,queue)" << endl;
+    cin >> type;
+    if (type == "stack") {
+        stack();
+    } else if (type == "queue") {
+        queue();
+    } else if (type == "bst") {
+        bst();
+    } else {
+        cout << "No value selected";
+    }
     return 0; //Frees up all constructors when set to return(0) and not exit(0)
 
 }
